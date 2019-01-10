@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QcTestDataService } from "../../qc-test-data.service";
+import { Chart } from "chart.js";
 
 @Component({
   selector: 'app-qc-dashboard',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QcDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dataService: QcTestDataService
+  ) { }
 
   ngOnInit() {
+    this.dataService.dailyForcast().subscribe(res => {
+      console.log('res', res);
+      
+    });
   }
 
 }
