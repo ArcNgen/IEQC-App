@@ -8,9 +8,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { QcDashboardComponent } from './components/qc-dashboard/qc-dashboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
-import { QcTestDataService } from "./qc-test-data.service";
 import { QcDashboardV2Component } from './components/qc-dashboard-v2/qc-dashboard-v2.component';
+
+import { QcTestDataService } from "./services/qc-test-data.service";
 
 @NgModule({
   declarations: [

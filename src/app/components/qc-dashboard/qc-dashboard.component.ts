@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QcTestDataService } from "../../qc-test-data.service";
+import { QcTestDataService } from "../../services/qc-test-data.service";
 
 import { Chart } from "chart.js";
 
