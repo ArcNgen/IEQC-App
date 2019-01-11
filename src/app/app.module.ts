@@ -10,6 +10,7 @@ import { QcDashboardComponent } from './components/qc-dashboard/qc-dashboard.com
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { QcTestDataService } from "./qc-test-data.service";
+import { QcDashboardV2Component } from './components/qc-dashboard-v2/qc-dashboard-v2.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { QcTestDataService } from "./qc-test-data.service";
     NavbarComponent,
     LandingPageComponent,
     QcDashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    QcDashboardV2Component
   ],
   imports: [
     BrowserModule,
