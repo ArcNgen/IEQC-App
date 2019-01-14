@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { QcTestDataService } from "../../services/qc-test-data.service";
 
+import { QcTestDataService } from "../../services/qc-test-data.service";
 import { Chart } from "chart.js";
 
 @Component({
-  selector: 'app-qc-dashboard',
-  templateUrl: './qc-dashboard.component.html',
-  styleUrls: ['./qc-dashboard.component.scss']
+  selector: 'app-qc-dashboard-v2',
+  templateUrl: './qc-dashboard-v2.component.html',
+  styleUrls: ['./qc-dashboard-v2.component.scss']
 })
-export class QcDashboardComponent implements OnInit {
+export class QcDashboardV2Component implements OnInit {
   chart: [];
 
   constructor(
@@ -16,38 +16,29 @@ export class QcDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataService.dailyForcast().subscribe(res => {
-      console.log(res);
+    let data = this.dataService.testAPICall().subscribe(result => {
+      let dates = result['series']['data'].map(result => result[0]).reverse();
+      let dataValues = result['series']['data'].map(result => result[1]).reverse();
+
+
+      console.log('chart data', dates, dataValues);
+      // console.log('data', result);
       
-      let temp_max = res['list'].map(res => res.main.temp_max);
-      let temp_min = res['list'].map(res => res.main.temp_min);
-      let alldates = res['list'].map(res => res.dt);
-      let weatherDates = [];
-      // let canvasId = document.getElementById("canvas");
-      // let ctx = document.getElementById("canvas");
-
-      alldates.forEach((res) => {
-        let jsdate = new Date(res * 1000);
-        weatherDates.push(jsdate.toLocaleTimeString('en', {year: 'numeric', month: 'short', day: 'numeric'}));
-      });
-
-      
-
       this.chart = new Chart('myCanvas', {
         type: 'line',
         data: {
-          labels: weatherDates,
+          labels: dates,
           datasets: [
             {
-              data: temp_max,
+              data: dataValues,
               borderColor: '#3cba9f',
               fill: false
             },
-            {
-              data: temp_min,
-              borderColor: '#ffcc00',
-              fill: false
-            }
+            // {
+            //   data: temp_min,
+            //   borderColor: '#ffcc00',
+            //   fill: false
+            // }
           ]
         },
         options: {
@@ -78,10 +69,12 @@ export class QcDashboardComponent implements OnInit {
           }
         }
       });
-
-      // console.log(this.chart); 
       
+      // return result;
     });
+    
+    
+    
   }
 
 }

@@ -23,4 +23,16 @@ export class QcTestDataService {
     return testApiData;
   }
 
+  testAPICall(): Observable<any> {
+    let frequency = 'W';
+    let area = 'PET_SUM_SNDW_DCUS_NUS_W';
+    let tableDataUrl = 'http://localhost/wpsrdata/';
+    let data = this.http.get<any>(tableDataUrl);
+    
+    /* let tableDataUrl = 'http://localhost/wpsrdata/data/tables/2_series/W/PET_SUM_SNDW_DCUS_NUS_W.json';
+    let data  = this.http.get<any>(tableDataUrl); */
+
+    return data;
+  }
+
 }

@@ -1,0 +1,24 @@
+
+<div [hidden]="!chart">
+  <div class="row">
+    <div class="col-lg-8 col-sm-12">
+        <canvas id="myCanvas">{{ chart }}</canvas>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <form>
+          
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Series id's</span>
+              </div>
+              <textarea id="series" name="series" class="form-control" aria-label="With text area">WCRFPUS2, WCRRIUS2</textarea>
+            </div>
+            <label class="small" for="series">Add series with comma seperation.</label>
+          </div>
+
+          <button class="btn btn-primary">Run query</button>
+        </form>
+      </div>
+    </div>
+</div>
